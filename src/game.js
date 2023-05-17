@@ -5,6 +5,6 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    scene: [Menu, Level1, Level2, Level3, Credits],
+    scene: [Intro, Menu, Level1, Level2, Level3, Credits],
     title: "Physics Demo",
 });
