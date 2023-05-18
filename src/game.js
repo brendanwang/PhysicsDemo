@@ -1,10 +1,11 @@
-const game = new Phaser.Game({
-    scale: {
-        mode: Phaser.Scale.FIT,
-        autoCenter: Phaser.Scale.CENTER_BOTH,
-        width: 1920,
-        height: 1080
-    },
-    scene: [Intro, Menu, Level1, Level2, Level3, Credits],
-    title: "Physics Demo",
-});
+let config = {
+
+    // dimensions of background.png
+    width: 700,
+    height: 800,
+    // backgroundColor: 0xffffff,
+    backgroundColor: 0x000000,
+    scene: [ Intro, Menu, Level1, Level2, Level3, Credits ]
+}
+
+let game = new Phaser.Game(config);
