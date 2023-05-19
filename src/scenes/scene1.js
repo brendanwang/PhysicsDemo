@@ -65,7 +65,7 @@ class Scene1 extends Phaser.Scene {
 
         // drop
         if (this.drop.isDown) {
-            this.player.setVelocityY(500);
+            this.player.setVelocityY(700);
         }
     }
 

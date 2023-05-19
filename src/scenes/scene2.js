@@ -51,6 +51,11 @@ class Scene2 extends Phaser.Scene {
         if (this.cursors.up.isDown) {
             this.player.setVelocityY(-500);
         }
+
+        // drop
+        if (this.drop.isDown) {
+            this.player.setVelocityY(700);
+        }
     }
 
     enterDoor() {
