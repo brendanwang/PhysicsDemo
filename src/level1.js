@@ -1,11 +1,11 @@
 class Level1 extends Phaser.Scene {
     constructor() {
-        super('level1');
+        super('Level1');
     }
 
     preload() {
         // load images
-        
+
     }
 
     create() {
