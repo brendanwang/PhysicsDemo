@@ -4,9 +4,10 @@ class Scene3 extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('sky', 'assets/images/sky.png');
-        this.load.image('platform', 'assets/images/platform.png');
-        this.load.spritesheet('player', 'assets/images/player.png', { frameWidth: 32, frameHeight: 48 });
+        this.load.image('sky', 'assets/sky.png');
+        this.load.image('platform', 'assets/platform.png');
+        this.load.spritesheet('player', 'assets/player.png', { frameWidth: 32, frameHeight: 48 });
+        this.load.image('door', 'assets/door.png');
     }
 
     create() {
@@ -14,9 +15,16 @@ class Scene3 extends Phaser.Scene {
 
         this.platforms = this.physics.add.staticGroup();
         this.platforms.create(400, 568, 'platform').setScale(2).refreshBody();
+        this.platforms.create(150, 450, 'platform');
         this.platforms.create(600, 400, 'platform');
+        this.platforms.create(300, 350, 'platform');
+        this.platforms.create(750, 320, 'platform');
         this.platforms.create(50, 250, 'platform');
-        this.platforms.create(750, 220, 'platform');
+        this.platforms.create(500, 200, 'platform');
+        this.platforms.create(200, 150, 'platform');
+        this.platforms.create(650, 120, 'platform');
+        this.platforms.create(350, 90, 'platform');
+        this.platforms.create(700, 60, 'platform');
 
         this.player = this.physics.add.sprite(100, 450, 'player');
         this.player.setBounce(0.2);
@@ -24,6 +32,11 @@ class Scene3 extends Phaser.Scene {
         this.player.body.setGravityY(300);
 
         this.physics.add.collider(this.player, this.platforms);
+
+        this.door = this.physics.add.sprite(700, 30, 'door');
+        this.door.body.setAllowGravity(false);
+
+        this.physics.add.collider(this.player, this.door, this.enterDoor, null, this);
 
         this.cursors = this.input.keyboard.createCursorKeys();
     }
@@ -37,8 +50,12 @@ class Scene3 extends Phaser.Scene {
             this.player.setVelocityX(0);
         }
 
-        if (this.cursors.up.isDown && this.player.body.touching.down) {
+        if (this.cursors.up.isDown) {
             this.player.setVelocityY(-500);
         }
+    }
+
+    enterDoor() {
+        this.scene.start('OutroScene');
     }
 }
