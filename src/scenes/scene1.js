@@ -6,6 +6,7 @@ class Scene1 extends Phaser.Scene {
     preload() {
         this.load.image('sky', 'assets/images/sky.png');
         this.load.image('platform', 'assets/images/platform.png');
+        this.load.image('door', 'assets/images/player.png');
         this.load.spritesheet('player', 'assets/images/player.png', { frameWidth: 32, frameHeight: 48 });
     }
 
@@ -25,6 +26,13 @@ class Scene1 extends Phaser.Scene {
 
         this.physics.add.collider(this.player, this.platforms);
 
+        this.door = this.physics.add.sprite(750, 180, 'door');
+        this.door.body.setAllowGravity(false);
+
+        this.physics.add.collider(this.player, this.door, this.enterDoor, null, this);
+
+
+        // keyboard inputs
         this.cursors = this.input.keyboard.createCursorKeys();
         
         this.left = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
@@ -59,5 +67,9 @@ class Scene1 extends Phaser.Scene {
         if (this.drop.isDown) {
             this.player.setVelocityY(500);
         }
+    }
+
+    enterDoor() {
+        this.scene.start('Scene2');
     }
 }
