@@ -10,7 +10,7 @@ class OutroScene extends Phaser.Scene {
         this.add.text(400, 420, 'Press ENTER to restart', { fontSize: '18px', fill: '#ffffff' }).setOrigin(0.5);
 
         this.input.keyboard.once('keydown-ENTER', () => {
-            this.scene.start('Scene1');
+            this.scene.start('IntroScene');
         });
     }
 }
