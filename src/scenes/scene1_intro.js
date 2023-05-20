@@ -4,7 +4,8 @@ class Scene1Intro extends Phaser.Scene {
     }
 
     create() {
-        this.add.text(400, 300, 'Level 1', { fontSize: '32px', fill: '#ffffff' }).setOrigin(0.5);
+        this.add.text(400, 250, 'Level 1', { fontSize: '32px', fill: '#ffffff' }).setOrigin(0.5);
+        this.add.text(400, 300, 'Use the arrow keys to move', { fontSize: '24px', fill: '#ffffff' }).setOrigin(0.5);
         this.add.text(400, 350, 'Press ENTER to continue', { fontSize: '24px', fill: '#ffffff' }).setOrigin(0.5);
 
         this.input.keyboard.once('keydown-ENTER', () => {

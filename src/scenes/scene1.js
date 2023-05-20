@@ -59,6 +59,6 @@ class Scene1 extends Phaser.Scene {
     }
 
     enterDoor() {
-        this.scene.start('Scene2');
+        this.scene.start('Scene2Intro');
     }
 }
