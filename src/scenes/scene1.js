@@ -6,12 +6,12 @@ class Scene1 extends Phaser.Scene {
     preload() {
         this.load.image('sky', 'assets/images/sky.png');
         this.load.image('platform', 'assets/images/platform.png');
-        this.load.spritesheet('player', 'assets/images/player.png', { frameWidth: 32, frameHeight: 48 });
-        this.load.image('door', 'assets/images/player.png');
+        this.load.image('player', 'assets/images/player.png');
+        this.load.image('door', 'assets/images/portal.png');
     }
 
     create() {
-        this.add.image(400, 300, 'sky');
+        this.cameras.main.setBackgroundColor('#2f3575');
 
         this.platforms = this.physics.add.staticGroup();
         this.platforms.create(400, 568, 'platform').setScale(2).refreshBody();
@@ -20,7 +20,7 @@ class Scene1 extends Phaser.Scene {
         this.platforms.create(750, 220, 'platform');
 
         this.player = this.physics.add.sprite(100, 450, 'player');
-        this.player.setBounce(0.2);
+        this.player.setBounce(0.5);
         this.player.setCollideWorldBounds(true);
         this.player.body.setGravityY(300);
 
