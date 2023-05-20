@@ -42,7 +42,7 @@ class IntroScene extends Phaser.Scene {
         selectedOption.setColor('#fff');
   
         if (selectedOption === playOption) {
-          this.scene.start('Scene1');
+          this.scene.start('Scene1Intro');
         } else if (selectedOption === creditsOption) {
           this.scene.start('OutroScene');
         }
