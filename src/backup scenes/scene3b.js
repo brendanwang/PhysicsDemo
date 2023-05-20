@@ -1,13 +1,13 @@
-class Scene1 extends Phaser.Scene {
+class Scene3 extends Phaser.Scene {
     constructor() {
-        super('Scene1');
+        super('Scene3');
     }
 
     preload() {
-        this.load.image('sky', 'assets/images/sky.png');
-        this.load.image('platform', 'assets/images/platform.png');
-        this.load.spritesheet('player', 'assets/images/player.png', { frameWidth: 32, frameHeight: 48 });
-        this.load.image('door', 'assets/images/player.png');
+        this.load.image('sky', 'assets/sky.png');
+        this.load.image('platform', 'assets/platform.png');
+        this.load.spritesheet('player', 'assets/player.png', { frameWidth: 32, frameHeight: 48 });
+        this.load.image('door', 'assets/door.png');
     }
 
     create() {
@@ -15,9 +15,16 @@ class Scene1 extends Phaser.Scene {
 
         this.platforms = this.physics.add.staticGroup();
         this.platforms.create(400, 568, 'platform').setScale(2).refreshBody();
+        this.platforms.create(150, 450, 'platform');
         this.platforms.create(600, 400, 'platform');
+        this.platforms.create(300, 350, 'platform');
+        this.platforms.create(750, 320, 'platform');
         this.platforms.create(50, 250, 'platform');
-        this.platforms.create(750, 220, 'platform');
+        this.platforms.create(500, 200, 'platform');
+        this.platforms.create(200, 150, 'platform');
+        this.platforms.create(650, 120, 'platform');
+        this.platforms.create(350, 90, 'platform');
+        this.platforms.create(700, 60, 'platform');
 
         this.player = this.physics.add.sprite(100, 450, 'player');
         this.player.setBounce(0.2);
@@ -26,19 +33,12 @@ class Scene1 extends Phaser.Scene {
 
         this.physics.add.collider(this.player, this.platforms);
 
-        this.door = this.physics.add.sprite(750, 180, 'door');
+        this.door = this.physics.add.sprite(700, 30, 'door');
         this.door.body.setAllowGravity(false);
 
         this.physics.add.collider(this.player, this.door, this.enterDoor, null, this);
 
-        // keyboard inputs
         this.cursors = this.input.keyboard.createCursorKeys();
-
-        this.left = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
-        this.right = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
-        this.jump = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
-        this.drop = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
-        this.charge = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
     }
 
     update() {
@@ -53,12 +53,14 @@ class Scene1 extends Phaser.Scene {
         if (this.cursors.up.isDown) {
             this.player.setVelocityY(-500);
         }
+
+        // drop
         if (this.drop.isDown) {
             this.player.setVelocityY(700);
         }
     }
 
     enterDoor() {
-        this.scene.start('Scene2');
+        this.scene.start('OutroScene');
     }
 }

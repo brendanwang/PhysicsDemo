@@ -4,10 +4,10 @@ class Scene2 extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('sky', 'assets/sky.png');
-        this.load.image('platform', 'assets/platform.png');
-        this.load.spritesheet('player', 'assets/player.png', { frameWidth: 32, frameHeight: 48 });
-        this.load.image('door', 'assets/door.png');
+        this.load.image('sky', 'assets/images/sky.png');
+        this.load.image('platform', 'assets/images/platform.png');
+        this.load.spritesheet('player', 'assets/images/player.png', { frameWidth: 32, frameHeight: 48 });
+        this.load.image('door', 'assets/images/player.png');
     }
 
     create() {
@@ -36,7 +36,14 @@ class Scene2 extends Phaser.Scene {
 
         this.physics.add.collider(this.player, this.door, this.enterDoor, null, this);
 
+        // keyboard inputs
         this.cursors = this.input.keyboard.createCursorKeys();
+
+        this.left = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+        this.right = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+        this.jump = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
+        this.drop = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
+        this.charge = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
     }
 
     update() {
@@ -51,8 +58,6 @@ class Scene2 extends Phaser.Scene {
         if (this.cursors.up.isDown) {
             this.player.setVelocityY(-500);
         }
-
-        // drop
         if (this.drop.isDown) {
             this.player.setVelocityY(700);
         }

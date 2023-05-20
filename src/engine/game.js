@@ -9,7 +9,10 @@ let config = {
             debug: false
         }
     },
-    scene: [TitleScene,IntroScene, Scene1, Scene2, Scene3, OutroScene]
+    // for debugging
+    scene: [Scene1, Scene2, Scene3]
+
+    //scene: [TitleScene, IntroScene, Scene1, Scene2, Scene3, OutroScene]
 };
 
 let game = new Phaser.Game(config);
