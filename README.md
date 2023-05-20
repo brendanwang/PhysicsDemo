@@ -1,5 +1,7 @@
 # PhysicsDemo - Block Jump
 
+Play the game using [this link](https://brendanwang.github.io/PhysicsDemo/)
+
 ## Credits
 - All assets and art were created by me in the program Aseprite
 
